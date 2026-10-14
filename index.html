@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu viaje empieza aquí</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barra de pestañas -->
+  <div class="navegacion" role="tablist" aria-label="Secciones">
+    <button class="pestana" role="tab" id="tab-inicio" data-panel="inicio" aria-controls="panel-inicio" aria-selected="true">Inicio</button>
+    <button class="pestana" role="tab" id="tab-cuenta" data-panel="cuenta" aria-controls="panel-cuenta" aria-selected="false" tabindex="-1">Cuenta</button>
+    <button class="pestana" role="tab" id="tab-pase" data-panel="pase" aria-controls="panel-pase" aria-selected="false" tabindex="-1">Pase</button>
+    <button class="pestana" role="tab" id="tab-maleta" data-panel="maleta" aria-controls="panel-maleta" aria-selected="false" tabindex="-1">Maleta</button>
+    <button class="pestana" role="tab" id="tab-pistas" data-panel="pistas" aria-controls="panel-pistas" aria-selected="false" tabindex="-1">Pistas</button>
+    <button class="pestana" role="tab" id="tab-juego" data-panel="juego" aria-controls="panel-juego" aria-selected="false" tabindex="-1">Juego</button>
+    <button class="pestana" role="tab" id="tab-destino" data-panel="destino" aria-controls="panel-destino" aria-selected="false" tabindex="-1">Destino</button>
+  </div>
+
+  <main>
+
+    <!-- Inicio -->
+    <section class="panel portada" id="panel-inicio" role="tabpanel" aria-labelledby="tab-inicio">
+      <div class="portada-texto">
+        <h1>Haz las maletas, nos vamos de viaje <span class="emoji">✈️</span></h1>
+        <p id="portada-sub">Destino: sorpresa <span class="emoji">✨</span></p>
+        <button class="bajar" data-ir="cuenta">Ver más</button>
+      </div>
+    </section>
+
+    <!-- Cuenta regresiva -->
+    <section class="panel seccion" id="panel-cuenta" role="tabpanel" aria-labelledby="tab-cuenta" hidden>
+      <div class="contenido">
+        <h2 id="titulo-cuenta">Falta poco</h2>
+        <div class="contador" id="contador" role="timer" aria-label="Tiempo restante para el viaje">
+          <div><span id="dias">0</span><small>días</small></div>
+          <div><span id="horas">0</span><small>horas</small></div>
+          <div><span id="minutos">0</span><small>minutos</small></div>
+          <div><span id="segundos">0</span><small>segundos</small></div>
+        </div>
+        <button class="bajar siguiente" data-ir="pase">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Pase de abordar -->
+    <section class="panel seccion alterna" id="panel-pase" role="tabpanel" aria-labelledby="tab-pase" hidden>
+      <div class="contenido contenido-ancho">
+        <h2>Tu pase de abordar</h2>
+        <p class="intro">Ya tienes lugar reservado. Escribe tu nombre en el pase; solo falta saber a dónde.</p>
+
+        <article class="pase">
+          <div class="pase-cuerpo">
+            <div class="pase-franja">
+              <span>Pase de abordar</span>
+              <span class="emoji">✈️</span>
+            </div>
+
+            <div class="pase-datos">
+              <div class="dato dato-grande">
+                <small>Pasajero</small>
+                <input id="pase-nombre" class="pase-input" type="text" maxlength="24" placeholder="Escribe tu nombre" autocomplete="given-name" aria-label="Nombre del pasajero">
+              </div>
+              <div class="dato">
+                <small>Origen</small>
+                <strong id="pase-origen"></strong>
+              </div>
+              <div class="dato">
+                <small>Destino</small>
+                <strong id="pase-destino" class="pase-destino">???</strong>
+              </div>
+              <div class="dato">
+                <small>Puerta</small>
+                <strong>Sorpresa</strong>
+              </div>
+              <div class="dato">
+                <small>Fecha</small>
+                <strong id="pase-fecha"></strong>
+              </div>
+              <div class="dato">
+                <small>Hora</small>
+                <strong id="pase-hora"></strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="pase-talon" aria-hidden="true">
+            <span class="codigo"></span>
+            <small>SV 1104</small>
+          </div>
+        </article>
+
+        <button class="bajar siguiente" data-ir="maleta">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Lo que no puede faltar -->
+    <section class="panel seccion" id="panel-maleta" role="tabpanel" aria-labelledby="tab-maleta" hidden>
+      <div class="contenido">
+        <h2>Lo que no puede faltar</h2>
+        <p class="intro">Marca lo que ya tienes listo.</p>
+
+        <ul class="lista" id="lista">
+          <li><label><input type="checkbox"><span>Tus documentos</span></label></li>
+          <li><label><input type="checkbox"><span>Zapatos cómodos para caminar mucho</span></label></li>
+          <li><label><input type="checkbox"><span>Cargador y batería extra</span></label></li>
+          <li><label><input type="checkbox"><span>Gafas de sol y protector solar</span></label></li>
+          <li><label><input type="checkbox"><span>Ropa ligera y una chaqueta</span></label></li>
+          <li><label><input type="checkbox"><span>Cámara o celular con espacio libre</span></label></li>
+          <li><label><input type="checkbox"><span>Muy buen apetito</span></label></li>
+          <li><label><input type="checkbox"><span>Ganas de improvisar</span></label></li>
+        </ul>
+
+        <p class="progreso" id="progreso"></p>
+        <button class="bajar siguiente" data-ir="pistas">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Pistas -->
+    <section class="panel seccion alterna" id="panel-pistas" role="tabpanel" aria-labelledby="tab-pistas" hidden>
+      <div class="contenido contenido-ancho">
+        <h2>Algunas pistas</h2>
+        <p class="intro">Toca cada tarjeta para descubrir un detalle.</p>
+
+        <div class="tarjetas">
+
+          <button class="tarjeta" aria-pressed="false">
+            <span class="interior">
+              <span class="cara frente">
+                <span class="icono">🍴</span>
+                <span class="nombre">Sabor</span>
+                <span class="toca">Toca para descubrir</span>
+              </span>
+              <span class="cara dorso">
+                <span class="pista-texto">Ingredientes sencillos y frescos, de esos que se comparten en la mesa sin prisa.</span>
+              </span>
+            </span>
+          </button>
+
+          <button class="tarjeta" aria-pressed="false">
+            <span class="interior">
+              <span class="cara frente">
+                <span class="icono">☕</span>
+                <span class="nombre">Aroma</span>
+                <span class="toca">Toca para descubrir</span>
+              </span>
+              <span class="cara dorso">
+                <span class="pista-texto">Café fuerte y pequeño, por las mañanas.</span>
+              </span>
+            </span>
+          </button>
+
+          <button class="tarjeta" aria-pressed="false">
+            <span class="interior">
+              <span class="cara frente">
+                <span class="icono">🔔</span>
+                <span class="nombre">Sonido</span>
+                <span class="toca">Toca para descubrir</span>
+              </span>
+              <span class="cara dorso">
+                <span class="pista-texto">Campanas a lo lejos y gente conversando en la calle.</span>
+              </span>
+            </span>
+          </button>
+
+          <button class="tarjeta" aria-pressed="false">
+            <span class="interior">
+              <span class="cara frente">
+                <span class="icono">☀️</span>
+                <span class="nombre">Clima</span>
+                <span class="toca">Toca para descubrir</span>
+              </span>
+              <span class="cara dorso">
+                <span class="pista-texto">Sol suave y atardeceres que no se acaban.</span>
+              </span>
+            </span>
+          </button>
+
+        </div>
+
+        <p class="progreso" id="progreso-pistas"></p>
+
+        <!-- Aparece cuando se descubren las cuatro pistas -->
+        <div class="adivina" id="adivina" hidden>
+          <h3>¿Ya sabes a dónde vamos?</h3>
+          <form id="form-adivina">
+            <input type="text" id="intento" placeholder="Escribe tu apuesta" autocomplete="off" aria-label="Tu apuesta del destino">
+            <button type="submit" class="boton">Probar suerte</button>
+          </form>
+          <p class="respuesta" id="respuesta" aria-live="polite"></p>
+        </div>
+
+        <button class="bajar siguiente" data-ir="juego">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Juego -->
+    <section class="panel seccion" id="panel-juego" role="tabpanel" aria-labelledby="tab-juego" hidden>
+      <div class="contenido contenido-ancho">
+        <h2>El gran reto del viajero</h2>
+        <p class="intro">Tres pruebas para ganarte tu título de viajero.</p>
+        <div class="juego" id="juego"></div>
+        <button class="bajar siguiente" data-ir="destino">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Destino -->
+    <section class="panel seccion" id="panel-destino" role="tabpanel" aria-labelledby="tab-destino" hidden>
+      <div class="contenido contenido-ancho">
+        <h2>El destino</h2>
+        <p class="destino-texto" id="destino-texto">🔒 Se revela cuando llegue el día.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
